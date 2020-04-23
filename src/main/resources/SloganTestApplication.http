@@ -1,0 +1,8 @@
+GET http://localhost:10018/api/orders/add?goods_name=sasa&price=8899.87
+
+###
+
+GET http://localhost:10018/api/orders/list
+
+###
+

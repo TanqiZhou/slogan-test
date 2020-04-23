@@ -1,0 +1,43 @@
+server:
+  port: 10018
+  undertow:
+    io-threads: 4
+spring:
+  kafka:
+    bootstrap-servers: 192.168.31.248:9092
+    producer:
+      acks: 1
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 1
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.31.248:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    username: slogan
+    password: Slogan$V*q#9XbYD3!Xw
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        format_sql: true
+        globally_quoted_identifiers: true
+    show-sql: true
+  redis:
+    host: 192.168.31.248
+    port: 6379
+    # 连接超时时间（毫秒）
+    timeout: 10000
+    jedis:
+      pool:
+        # 连接池中的最大空闲连接
+        max-idle: 10
+        # 连接池中的最小空闲连接
+        min-idle: 5
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: -1
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+
+
