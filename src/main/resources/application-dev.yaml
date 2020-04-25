@@ -5,6 +5,11 @@ server:
 spring:
   kafka:
     bootstrap-servers: 192.168.31.248:9092
+    listener:
+      # 在侦听器容器中运行的线程数。
+      concurrency: 5
+      #listner负责ack，每调用一次，就立即commit  manual  manual_immediate
+      ack-mode: manual
     producer:
       # acks=0 ： 生产者在成功写入消息之前不会等待任何来自服务器的响应。
       # acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。
@@ -38,12 +43,6 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       # 值的反序列化方式
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        listener:
-          # 在侦听器容器中运行的线程数。
-          concurrency: 5
-          #listner负责ack，每调用一次，就立即commit  manual
-          ack-mode: manual_immediate
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.31.248:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
